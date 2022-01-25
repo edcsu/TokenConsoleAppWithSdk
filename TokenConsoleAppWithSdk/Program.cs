@@ -10,11 +10,15 @@ namespace TokenConsoleAppWithSdk
         static async Task Main(string[] args)
         {
             Console.WriteLine("Getting token from AuthService");
-            var builder = new ConfigurationBuilder()
-                                .SetBasePath(Directory.GetCurrentDirectory())
-                                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-            var settings = builder.Build().GetSection("Authentication").Get<AuthServiceSettings>();
+            var settings = new AuthServiceSettings
+            {
+                ApiName = string.Empty,
+                Authority = string.Empty,
+                ClientId = string.Empty,
+                ClientSecret = string.Empty
+            };
+
             Console.WriteLine($"Accessing: {settings.Authority}");
 
             var tokenDetails = await TokenHelper.GetNewTokenAsync(settings);
