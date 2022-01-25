@@ -7,7 +7,7 @@ namespace TokenConsoleAppWithSdk
 {
     public static class TokenHelper
     {
-        public static async Task<TokenResponse> GetNewTokenAsync(AuthServiceSettings settings)
+        public static async Task<TokenResponse?> GetNewTokenAsync(AuthServiceSettings settings)
         {
             try
             {
@@ -44,9 +44,9 @@ namespace TokenConsoleAppWithSdk
                     return token;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
             }
 
             return null;

@@ -22,7 +22,7 @@ namespace TokenConsoleAppWithSdk
             Console.WriteLine($"Accessing: {settings.Authority}");
 
             var tokenDetails = await TokenHelper.GetNewTokenAsync(settings);
-            Console.WriteLine($"Access token: {tokenDetails.AccessToken}");
+            Console.WriteLine($"Access token: {tokenDetails!.AccessToken}");
             Console.WriteLine($"Expires In: {tokenDetails.ExpiresIn} seconds");
             Console.WriteLine($"TokenType: {tokenDetails.TokenType}");
             Console.WriteLine($"Scope: {tokenDetails.Scope}");
