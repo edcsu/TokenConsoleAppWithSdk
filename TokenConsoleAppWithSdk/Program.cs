@@ -11,13 +11,14 @@ namespace TokenConsoleAppWithSdk
         {
             Console.WriteLine("Getting token from AuthService");
 
-            var settings = new AuthServiceSettings
-            {
-                ApiName = string.Empty,
-                Authority = string.Empty,
-                ClientId = string.Empty,
-                ClientSecret = string.Empty
-            };
+            // Build a config object, using env vars and JSON providers.
+            IConfiguration config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables()
+                .Build();
+
+            // Get AuthServiceSettings values from the config.
+            var settings = config.GetRequiredSection(AuthServiceSettings.ConfigurationName).Get<AuthServiceSettings>();
 
             Console.WriteLine($"Accessing: {settings.Authority}");
 
